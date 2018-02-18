@@ -1,0 +1,7 @@
+== xvisualbell ==
+
+Makes your screen flash to alert you of something. You can give it a single
+letter argument (w/r/g/b/c/m/y/k) to set the color (default: white).
+
+(C) 2018 Tobias Girstmair, https://gir.st/
+This program is released under the GNU General Public License, Version 3.
