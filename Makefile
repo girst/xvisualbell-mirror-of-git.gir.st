@@ -7,7 +7,7 @@ TARGET = xvisbell
 all: $(TARGET)
 
 $(TARGET):%:%.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $< -o $@ $(CFLAGS)
 
 clean:
 	rm -f $(TARGET)
