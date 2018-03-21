@@ -7,6 +7,7 @@ int main (int argc, char** argv) {
 	Display *display;
 	Window  window;
 	XWindowAttributes xwa;
+	XSetWindowAttributes xswa;
 	unsigned long bgcolor = 0xffffff;
 
 	/* parse command line arguments for 3bit colors */
@@ -32,13 +33,10 @@ int main (int argc, char** argv) {
 		0, 0, /* border settings */
 		bgcolor);
 
-	Atom wdialog = XInternAtom (display, "_NET_WM_WINDOW_TYPE_DIALOG", 1);
-	XChangeProperty (display, window,
-		XInternAtom (display, "_NET_WM_WINDOW_TYPE", 1),
-		XInternAtom (display, "ATOM", 1),
-		32, PropModeReplace, (unsigned char *) &wdialog, 1);
+	/*shut out window manager (makes window full screen over all monitors)*/
+	xswa.override_redirect = 1;
+	XChangeWindowAttributes (display, window, CWOverrideRedirect, &xswa);
 
-	XFlush(display);
 	XMapWindow(display,window);
 	XFlush(display);
 

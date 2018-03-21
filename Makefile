@@ -1,13 +1,12 @@
 .PHONY: all clean
-CC = gcc
-CFLAGS = -std=c89 -lXt -lX11 
+CFLAGS = -std=c89 -lX11
 PREFIX = $(DESTDIR)/usr/local
 TARGET = xvisbell
 
 all: $(TARGET)
 
 $(TARGET):%:%.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $< -o $@ $(CFLAGS)
 
 clean:
 	rm -f $(TARGET)
